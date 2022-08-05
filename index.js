@@ -1,14 +1,14 @@
-const Inquirer = require("Inquirer");
+const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const fs = require("fs");
-const helper = require("./src/TemplateHelper");
+const htmlHelper = require("./src/TemplateHelper");
 
 const teamMembers = [];
 
 const managerInfo = () => {
-    return Inquirer.prompt([
+    return inquirer.prompt([
         {
             type: "input",
             name: "name",
@@ -36,7 +36,7 @@ const managerInfo = () => {
             choices: ["Add Engineer", "Add Intern", "Done"],
         },
     ]).then((answers) => {
-        const manager = Manager(answers.name, answers.id, answers.email, answers.office);
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
         teamMembers.push(manager);
         switch (answers.additionalTeamMember) {
             case "Add Engineer":
@@ -46,13 +46,13 @@ const managerInfo = () => {
                 internInfo();
                 break;
             default:
-                createHTML("./dist/index.html", helper(team));
+                createHTML("./dist/index.html", htmlHelper(teamMembers));
         }
     });
 };
 
 const engineerInfo = () => {
-    return Inquirer.prompt([
+    return inquirer.prompt([
         {
             type: "input",
             name: "name",
@@ -80,7 +80,7 @@ const engineerInfo = () => {
             choices: ["Add Engineer", "Add Intern", "Done"],
         },
     ]).then((answers) => {
-        const engineer = Engineer(answers.name, answers.id, answers.email, answers.github);
+        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
         teamMembers.push(engineer);
         switch (answers.additionalTeamMember) {
             case "Add Engineer":
@@ -90,13 +90,13 @@ const engineerInfo = () => {
                 internInfo();
                 break;
             default:
-                createHTML("./dist/index.html", helper(team));
+                createHTML("./dist/index.html", htmlHelper(teamMembers));
         }
     });
 };
 
 const internInfo = () => {
-    return Inquirer.prompt([
+    return inquirer.prompt([
         {
             type: "input",
             name: "name",
@@ -124,7 +124,7 @@ const internInfo = () => {
             choices: ["Add Engineer", "Add Intern", "Done"],
         },
     ]).then((answers) => {
-        const intern = Intern(answers.name, answers.id, answers.email, answers.school);
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
         teamMembers.push(intern);
         switch (answers.additionalTeamMember) {
             case "Add Engineer":
@@ -134,7 +134,7 @@ const internInfo = () => {
                 internInfo();
                 break;
             default:
-                createHTML("./dist/index.html", helper(team));
+                createHTML("./dist/index.html", htmlHelper(teamMembers));
         }
     });
 };

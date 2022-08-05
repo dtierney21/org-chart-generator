@@ -1,17 +1,14 @@
-const Manager = require("../lib/Manager");
-const Engineer = require("../lib/Engineer");
-const Intern = require("../lib/Intern");
-
 function getIcon(role) {
-    switch (member.getTitle()) {
+    console.log(`This is the role: ${role}`);
+    switch (role) {
         case "Manager":
-            return '<h6 class="card-text"><i class="fa-solid fa-mug-hot"></i> Manager</h6>';
+            return '<h3 class="card-text"><i class="fa-solid fa-mug-hot"></i> Manager</h6>';
             break;
         case "Engineer":
-            return '<h6 class="card-text"><i class="fa-solid fa-glasses"></i> Engineer</h6>';
+            return '<h3 class="card-text"><i class="fa-solid fa-glasses"></i> Engineer</h6>';
             break;
         case "Intern":
-            return '<h6 class="card-text"><i class="fa-solid fa-user-graduate"></i> Intern</h6>';
+            return '<h3 class="card-text"><i class="fa-solid fa-user-graduate"></i> Intern</h6>';
             break;
     }
 }
@@ -19,10 +16,10 @@ function getIcon(role) {
 function getUniqueAttribute(member) {
     switch (member.getTitle()) {
         case "Manager":
-            return `<li class="list-group-item">Office Number: ${member.getNumber()}</li>`;
+            return `<li class="list-group-item">Office Number: ${member.getOfficeNumber()}</li>`;
             break;
         case "Engineer":
-            return `<li class="list-group-item">GitHub: <a href="https://github.com/${member.getGithub()}" target="_blank">${member.getGithub()}</a></li>`;
+            return `<li class="list-group-item">GitHub: <a href="https://github.com/${member.getGitHub()}" target="_blank">${member.getGitHub()}</a></li>`;
             break;
         case "Intern":
             return `<li class="list-group-item">School: ${member.getSchool()}</li>`;
@@ -35,7 +32,7 @@ function createTeamMemberCards(team) {
     for (const member of team) {
         let card = `
         <div class="card" style="width: 18rem;">
-            <div class='card-header bg-primary text-white'>
+            <div class="card-header bg-primary text-white">
                 <h3 class="card-title">${member.getName()}</h3>
                 ${getIcon(member.getTitle)}
             </div>
@@ -43,7 +40,7 @@ function createTeamMemberCards(team) {
                 <ul class = "list-group">
                     <li class = "list-group-item">ID: ${member.getId()}</li>
                     <li class="list-group-item">Email: <a href="mailto: ${member.getEmail()}">${member.getEmail()}</a></li>
-                    <li class="list-group-item">${getUniqueAttribute(member)}</li>
+                    ${getUniqueAttribute(member)}
                 </ul>
             </div>
       </div>
@@ -53,7 +50,7 @@ function createTeamMemberCards(team) {
     return cards.join("");
 }
 
-function createPage() {
+function createPage(teamMembers) {
     return `
     <!DOCTYPE html>
     <head>
@@ -67,7 +64,7 @@ function createPage() {
         <h1 class="display-5 text-center">My Team</h1>
     </div>
     <div class="d-flex flex-row flex-wrap justify-content-center">
-        ${createTeamMemberCards(team)}
+        ${createTeamMemberCards(teamMembers)}
     </div>
     </body>
     </html>
