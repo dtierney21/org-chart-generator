@@ -1,5 +1,4 @@
 function getIcon(role) {
-    console.log(`This is the role: ${role}`);
     switch (role) {
         case "Manager":
             return `<h3 class="card-text"><i class="fa fa-mug-hot"></i> Manager</h6>`;
@@ -31,7 +30,7 @@ function createTeamMemberCards(team) {
     let cards = [];
     for (const member of team) {
         let card = `
-        <div class="card" style="width: 18rem;">
+        <div class="card m-2" style="width: 18rem;">
             <div class="card-header bg-primary text-white">
                 <h3 class="card-title">${member.getName()}</h3>
                 ${getIcon(member.getTitle())}
