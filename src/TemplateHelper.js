@@ -2,13 +2,13 @@ function getIcon(role) {
     console.log(`This is the role: ${role}`);
     switch (role) {
         case "Manager":
-            return '<h3 class="card-text"><i class="fa-solid fa-mug-hot"></i> Manager</h6>';
+            return `<h3 class="card-text"><i class="fa fa-mug-hot"></i> Manager</h6>`;
             break;
         case "Engineer":
-            return '<h3 class="card-text"><i class="fa-solid fa-glasses"></i> Engineer</h6>';
+            return `<h3 class="card-text"><i class="fa fa-glasses"></i> Engineer</h6>`;
             break;
         case "Intern":
-            return '<h3 class="card-text"><i class="fa-solid fa-user-graduate"></i> Intern</h6>';
+            return `<h3 class="card-text"><i class="fa fa-user-graduate"></i> Intern</h6>`;
             break;
     }
 }
@@ -34,7 +34,7 @@ function createTeamMemberCards(team) {
         <div class="card" style="width: 18rem;">
             <div class="card-header bg-primary text-white">
                 <h3 class="card-title">${member.getName()}</h3>
-                ${getIcon(member.getTitle)}
+                ${getIcon(member.getTitle())}
             </div>
             <div class="card-body">
                 <ul class = "list-group">
