@@ -5,8 +5,10 @@ const Intern = require("./lib/Intern");
 const fs = require("fs");
 const htmlHelper = require("./src/TemplateHelper");
 
+// Instantiate an array to hold the team members
 const teamMembers = [];
 
+// use inquirer to prompt the user for the manager's info
 const managerInfo = () => {
     return inquirer.prompt([
         {
@@ -42,6 +44,7 @@ const managerInfo = () => {
     });
 };
 
+// use inquirer to prompt the user for the engineer's info
 const engineerInfo = () => {
     return inquirer.prompt([
         {
@@ -77,6 +80,7 @@ const engineerInfo = () => {
     });
 };
 
+// use inquirer to prompt the user for the interns's info
 const internInfo = () => {
     return inquirer.prompt([
         {
@@ -112,6 +116,7 @@ const internInfo = () => {
     });
 };
 
+// determine if the user wants to input an additional team member or render the page
 function addTeamMember(answer) {
     switch (answer) {
         case "Add Engineer":
@@ -125,10 +130,12 @@ function addTeamMember(answer) {
     }
 }
 
+// create the page
 function createHTML(file, data) {
     fs.writeFile(file, data, (err) => {
         err ? console.error(err) : console.log("Index.html Successfully Generated!");
     });
 }
 
+// run the application
 managerInfo();

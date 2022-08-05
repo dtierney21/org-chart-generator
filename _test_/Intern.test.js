@@ -1,4 +1,3 @@
-const Employee = require('../lib/Employee');
 const Intern = require('../lib/Intern');
 
 describe("Intern", () => {
@@ -11,13 +10,13 @@ describe("Intern", () => {
 
     describe("getSchool", () => {
         it("should return the school that the intern is attending", () => {
-            const result = intern.getSchool;
+            const result = intern.getSchool();
             expect(result).toEqual(school);
         });
     });
     describe("getTitle", () => {
         it("should return the title of the intern", () => {
-            const result = engineer.getTitle();
+            const result = intern.getTitle();
             expect(result).toEqual(title);
         });
     });

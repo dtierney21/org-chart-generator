@@ -1,5 +1,6 @@
-function getIcon(role) {
-    switch (role) {
+// return the correct html for the employee's icon and title
+function getIcon(title) {
+    switch (title) {
         case "Manager":
             return `<h3 class="card-text"><i class="fa-solid fa-mug-hot"></i> Manager</h6>`;
             break;
@@ -12,6 +13,7 @@ function getIcon(role) {
     }
 }
 
+// return the correct html for the employee's attribute that is unique to their title
 function getUniqueAttribute(member) {
     switch (member.getTitle()) {
         case "Manager":
@@ -26,6 +28,7 @@ function getUniqueAttribute(member) {
     }
 }
 
+// create an html card for each team member
 function createTeamMemberCards(team) {
     let cards = [];
     for (const member of team) {
@@ -49,6 +52,7 @@ function createTeamMemberCards(team) {
     return cards.join("");
 }
 
+// return the html that will be written to the index.html file
 function createPage(teamMembers) {
     return `
     <!DOCTYPE html>
