@@ -1,13 +1,13 @@
 function getIcon(role) {
     switch (role) {
         case "Manager":
-            return `<h3 class="card-text"><i class="fa fa-mug-hot"></i> Manager</h6>`;
+            return `<h3 class="card-text"><i class="fa-solid fa-mug-hot"></i> Manager</h6>`;
             break;
         case "Engineer":
-            return `<h3 class="card-text"><i class="fa fa-glasses"></i> Engineer</h6>`;
+            return `<h3 class="card-text"><i class="fa-solid fa-glasses"></i> Engineer</h6>`;
             break;
         case "Intern":
-            return `<h3 class="card-text"><i class="fa fa-user-graduate"></i> Intern</h6>`;
+            return `<h3 class="card-text"><i class="fa-solid fa-user-graduate"></i> Intern</h6>`;
             break;
     }
 }
@@ -54,7 +54,7 @@ function createPage(teamMembers) {
     <!DOCTYPE html>
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <title>My Team</title>
     </head>
