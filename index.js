@@ -38,16 +38,7 @@ const managerInfo = () => {
     ]).then((answers) => {
         const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
         teamMembers.push(manager);
-        switch (answers.additionalTeamMember) {
-            case "Add Engineer":
-                engineerInfo();
-                break;
-            case "Add Intern":
-                internInfo();
-                break;
-            default:
-                createHTML("./dist/index.html", htmlHelper(teamMembers));
-        }
+        addTeamMember(answers.additionalTeamMember);
     });
 };
 
@@ -82,16 +73,7 @@ const engineerInfo = () => {
     ]).then((answers) => {
         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
         teamMembers.push(engineer);
-        switch (answers.additionalTeamMember) {
-            case "Add Engineer":
-                engineerInfo();
-                break;
-            case "Add Intern":
-                internInfo();
-                break;
-            default:
-                createHTML("./dist/index.html", htmlHelper(teamMembers));
-        }
+        addTeamMember(answers.additionalTeamMember);
     });
 };
 
@@ -126,18 +108,22 @@ const internInfo = () => {
     ]).then((answers) => {
         const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
         teamMembers.push(intern);
-        switch (answers.additionalTeamMember) {
-            case "Add Engineer":
-                engineerInfo();
-                break;
-            case "Add Intern":
-                internInfo();
-                break;
-            default:
-                createHTML("./dist/index.html", htmlHelper(teamMembers));
-        }
+        addTeamMember(answers.additionalTeamMember);
     });
 };
+
+function addTeamMember(answer) {
+    switch (answer) {
+        case "Add Engineer":
+            engineerInfo();
+            break;
+        case "Add Intern":
+            internInfo();
+            break;
+        default:
+            createHTML("./dist/index.html", htmlHelper(teamMembers));
+    }
+}
 
 function createHTML(file, data) {
     fs.writeFile(file, data, (err) => {
